@@ -1364,6 +1364,34 @@ function Reports({ profile, activeUser, showToast }) {
 
 // ── OVERVIEW PORTAL ──
 function OverviewPage({ profile }) {
+  const [allProfilesCount, setAllProfilesCount] = useState(0);
+  const [submissionCount, setSubmissionCount] = useState(0);
+  const [yesOutcomeCount, setYesOutcomeCount] = useState(0);
+  const [cycleThemes, setCycleThemes] = useState([]);
+
+  const completionRate = allProfilesCount > 0 ? Math.round((submissionCount / allProfilesCount) * 100) : 0;
+  const overallYesRate = submissionCount > 0 ? Math.round((yesOutcomeCount / submissionCount) * 100) : 0;
+  const pendingGeneral = cycleThemes.filter(t => t.status === 'pending_review' || t.status === 'pending_hr_approval').length;
+
+  useEffect(() => {
+    fetchLiveMetrics();
+  }, []);
+
+  async function fetchLiveMetrics() {
+    // 1. Total employees
+    const { count: empCount } = await supabase.from('profiles').select('*', { count: 'exact', head: true });
+    setAllProfilesCount(empCount || 0);
+
+    // 2. Reviews for cycle
+    const { data: cycleReviews } = await supabase.from('monthly_reviews').select('overall_result').eq('cycle_id', CYCLE_ID);
+    setSubmissionCount(cycleReviews?.length || 0);
+    setYesOutcomeCount(cycleReviews?.filter(r => r.overall_result === 'YES').length || 0);
+
+    // 3. Themes for cycle
+    const { data: themes } = await supabase.from('themes').select('*').eq('cycle_id', CYCLE_ID);
+    setCycleThemes(themes || []);
+  }
+
   const depts = [
     { name: "Engineering", pct: 76, cls: "dist-bar-engineering" },
     { name: "Product", pct: 71, cls: "dist-bar-product" },
@@ -1393,22 +1421,22 @@ function OverviewPage({ profile }) {
 
         <div className="ov-stats-row">
            <div className="ov-stat-card accent-cyan">
-              <div className="ov-stat-num">847</div>
+              <div className="ov-stat-num">{allProfilesCount}</div>
               <div className="ov-stat-label">ACTIVE EMPLOYEES</div>
               <div className="ov-stat-indicator up">↑ Synced from SAP Connect</div>
            </div>
            <div className="ov-stat-card">
-              <div className="ov-stat-num">89%</div>
+              <div className="ov-stat-num">{completionRate}%</div>
               <div className="ov-stat-label">SUBMISSION COMPLETION</div>
               <div className="ov-stat-indicator up">↑ +6% vs last month</div>
            </div>
            <div className="ov-stat-card">
-              <div className="ov-stat-num">72%</div>
+              <div className="ov-stat-num">{overallYesRate}%</div>
               <div className="ov-stat-label">OVERALL YES RATE</div>
               <div className="ov-stat-indicator up">↑ 2+ Yes outcomes</div>
            </div>
            <div className="ov-stat-card">
-              <div className="ov-stat-num" style={{ color: 'var(--yellow)' }}>31</div>
+              <div className="ov-stat-num" style={{ color: 'var(--yellow)' }}>{pendingGeneral}</div>
               <div className="ov-stat-label">PENDING VALIDATIONS</div>
               <div className="ov-stat-indicator down" style={{ color: 'var(--red)' }}>↓ Themes awaiting manager</div>
            </div>
