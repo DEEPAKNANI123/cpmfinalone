@@ -410,12 +410,12 @@ function Employee({ profile, activeUser, showToast }) {
     <div className="page">
       <div className="portal-label">○ EMPLOYEE PORTAL</div>
       <div className="page-title">My <span>Monthly Review</span></div>
-      <div className="page-sub">{profile?.first_name} {profile?.last_name} · {profile?.job_title}</div>
+      <div className="page-sub">{profile?.first_name} {profile?.last_name} · {profile?.employee_id} · {profile?.job_title}</div>
       
       <div className="emp-profile">
         <div className="emp-left">
           <div className="emp-avatar">{getInitials(profile)}</div>
-          <div><div className="emp-name">{profile?.first_name} {profile?.last_name}</div><div className="emp-meta">EMP-{profile?.id?.slice(0,5)} · {profile?.job_title}</div></div>
+          <div><div className="emp-name">{profile?.first_name} {profile?.last_name}</div><div className="emp-meta">{profile?.employee_id} · {profile?.job_title}</div></div>
         </div>
         <div className="emp-right">
           <Badge cls="yellow" dot>In Progress</Badge>
