@@ -1594,27 +1594,7 @@ function ArchitecturePage({ profile }) {
          <div className="ov-hero-sub">SAP Connect integration · Data flows · Authentication · Tech stack · 8-week delivery</div>
       </div>
 
-      {/* 2. STATS ROW */}
-      <div className="ov-stats-row">
-         <div className="ov-stat-card accent-cyan">
-            <div className="ov-stat-num">847</div>
-            <div className="ov-stat-label">ACTIVE EMPLOYEES</div>
-            <div className="ov-stat-indicator up">↑ Synced from SAP Connect</div>
-         </div>
-         <div className="ov-stat-card">
-            <div className="ov-stat-num">89%</div>
-            <div className="ov-stat-label">SUBMISSION COMPLETION</div>
-            <div className="ov-stat-indicator up">↑ +6% vs last month</div>
-         </div>
-         <div className="ov-stat-num">72%</div>
-         <div className="ov-stat-label">OVERALL YES RATE</div>
-         <div className="ov-stat-indicator up">↑ 2+ Yes outcomes</div>
-         <div className="ov-stat-card">
-            <div className="ov-stat-num" style={{ color: 'var(--yellow)' }}>31</div>
-            <div className="ov-stat-label">PENDING VALIDATIONS</div>
-            <div className="ov-stat-indicator down" style={{ color: 'var(--red)' }}>↓ Themes awaiting manager</div>
-         </div>
-      </div>
+
 
       {/* 3. TIERED ARCHITECTURE */}
       {blueprint.map((b, bi) => (
