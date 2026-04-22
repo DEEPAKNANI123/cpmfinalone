@@ -73,7 +73,7 @@ function Overview({ profile }) {
 
   return (
     <div className="page">
-      <div className="portal-label">◆ EXECUTIVE OVERVIEW · APRIL 2025</div>
+      <div className="portal-label">◆ EXECUTIVE OVERVIEW · APRIL 2026</div>
       <div className="page-title">Continuous Performance<br/><span>Framework Dashboard</span></div>
       <div className="page-sub">Monthly binary review cycles · Theme validation · Rolling period roll-up · SAP Connect integration</div>
       
@@ -419,13 +419,13 @@ function Employee({ profile, activeUser, showToast }) {
         </div>
         <div className="emp-right">
           <Badge cls="yellow" dot>In Progress</Badge>
-          <div className="v-stack"><div className="period-label-sm">Review Period</div><div className="period-val">APR 2025</div></div>
+          <div className="v-stack"><div className="period-label-sm">Review Period</div><div className="period-val">APR 2026</div></div>
         </div>
       </div>
 
       <div className="frame" style={{ borderLeft: '4px solid var(--purple)', background: 'rgba(130,80,223,0.02)' }}>
          <div className="sec-title" style={{ color: 'var(--purple)' }}>Themes</div>
-         <div style={{ fontSize: 12, opacity: 0.7, marginBottom: 16 }}>Broadcasted by Direction (Satya) for Year 2025 Alignment.</div>
+         <div style={{ fontSize: 12, opacity: 0.7, marginBottom: 16 }}>Broadcasted by Direction (Satya) for Year 2026 Alignment.</div>
          <div className="h-stack" style={{ gap: 12, flexWrap: 'wrap' }}>
             {rootThemes.map(p => {
               const isAdopted = themes.some(t => t.parent_id === p.id || t.id === p.id);
@@ -864,9 +864,9 @@ function Employee({ profile, activeUser, showToast }) {
             </tr>
           </thead>
           <tbody>
-            <tr><td>Mar 2025</td><td><Badge cls="green">YES</Badge></td><td><Badge cls="green">3 Approved</Badge></td><td>🔥 Strong delivery, great collaboration this month</td></tr>
-            <tr><td>Feb 2025</td><td><Badge cls="green">YES</Badge></td><td><Badge cls="green">2 Approved</Badge></td><td>🔥 Met expectations across all areas</td></tr>
-            <tr><td>Jan 2025</td><td><Badge cls="red">NO</Badge></td><td><Badge cls="yellow">1 Returned</Badge></td><td>💡 Please address Q4 carry-over items before next cycle</td></tr>
+            <tr><td>Mar 2026</td><td><Badge cls="green">YES</Badge></td><td><Badge cls="green">3 Approved</Badge></td><td>🔥 Strong delivery, great collaboration this month</td></tr>
+            <tr><td>Feb 2026</td><td><Badge cls="green">YES</Badge></td><td><Badge cls="green">2 Approved</Badge></td><td>🔥 Met expectations across all areas</td></tr>
+            <tr><td>Jan 2026</td><td><Badge cls="red">NO</Badge></td><td><Badge cls="yellow">1 Returned</Badge></td><td>💡 Please address Q4 carry-over items before next cycle</td></tr>
           </tbody>
         </table>
       </div>
@@ -957,17 +957,17 @@ function ManagerPortal({ profile, activeUser, showToast }) {
     <div className="page" style={{ paddingBottom: 60 }}>
       <div className="portal-label">◈ MANAGER PORTAL</div>
       <div className="page-title">Team <span>Reviews</span></div>
-      <div className="page-sub">April 2025 · {profile?.first_name} {profile?.last_name} · {team.length} Direct Reports</div>
+      <div className="page-sub">April 2026 · {profile?.first_name} {profile?.last_name} · {team.length} Direct Reports</div>
 
       <div className="stats-grid" style={{ marginBottom: 32 }}>
         <StatCard cls="blue" label="Direct Reports" val={team.length} valCls="cyan" note="Staff in your team" />
         <StatCard cls={pendingCount > 0 ? "orange" : "blue"} label="Pending Inputs" val={pendingCount} valCls={pendingCount > 0 ? "orange" : "cyan"} note="Requires action" />
-        <StatCard cls="blue" label="Completed" val={completedCount} valCls="green" note="For April 2025" />
+        <StatCard cls="blue" label="Completed" val={completedCount} valCls="green" note="For April 2026" />
         <StatCard cls="blue" label="Team YES Rate" val={`${yesRate}%`} valCls="cyan" note="Overall monthly result" />
       </div>
 
       <div className="frame">
-        <div className="sec-title">Team Monthly Inputs — April 2025</div>
+        <div className="sec-title">Team Monthly Inputs — April 2026</div>
         {team.map((m, i) => {
           const review = reviews.find(r => r.employee_id === m.id);
           const themesForUser = teamThemes.filter(t => t.assigned_to === m.id || t.employee_id === m.id);
@@ -995,7 +995,7 @@ function ManagerPortal({ profile, activeUser, showToast }) {
                          <div className="emp-avatar">{getInitials(m)}</div>
                          <div className="v-stack">
                            <div className="member-name">{m.first_name} {m.last_name}</div>
-                           <div className="member-role">{m.job_title} · April 2025</div>
+                           <div className="member-role">{m.job_title} · April 2026</div>
                          </div>
                        </div>
                        <button className="badge badge-gray" onClick={() => setActivePanel(null)}>✕ Close</button>
@@ -1106,7 +1106,7 @@ function DirectorPortal({ profile, activeUser, showToast }) {
       
       <div className="frame" style={{ background: 'rgba(0,178,236,0.02)', borderLeft: '4px solid var(--cyan)' }}>
          <div className="sec-title" style={{ color: 'var(--cyan)' }}>Themes Portfolio</div>
-         <div style={{ fontSize: 11, opacity: 0.7, marginBottom: 16 }}>These 5 core pillars are broadcasted as the organizational strategy for Year 2025.</div>
+         <div style={{ fontSize: 11, opacity: 0.7, marginBottom: 16 }}>These 5 core pillars are broadcasted as the organizational strategy for Year 2026.</div>
          <div className="h-stack" style={{ gap: 10, flexWrap: 'wrap' }}>
             {governancePillars.map(p => (
               <div key={p.id} className="pillar-tag active" style={{ padding: '8px 12px', background: 'var(--bg2)', border: '1px solid var(--cyan)', borderRadius: 8, fontSize: 12, color: 'var(--cyan)' }}>
